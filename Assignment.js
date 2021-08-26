@@ -39,30 +39,30 @@ function deliveryCost(quantity) {
   // negative value validation
   quantity = Math.abs(quantity);
 
-  const quantity1To100 = 100;
-  const quantity101To200 = 80;
-  const quantityUpTo200 = 50;
+  const price1To100 = 100;
+  const price101To200 = 80;
+  const priceUpTo200 = 50;
+  const quantityUpto100 = quantity - 100;
+  const quantityUpto200 = quantity - 200;
 
   if (quantity <= 100) {
-    tShirtPrice1To100 = quantity * quantity1To100;
-    return tShirtPrice1To100;
+    totalPrice = quantity * price1To100;
+    return totalPrice;
   } else if (quantity <= 200) {
-    const tShirtPrice100 = 100 * quantity1To100;
-    const restTShirt = quantity - 100;
-    const tShirtPrice101To200 = restTShirt * 80;
-    const totalPrice1To200 = tShirtPrice100 + tShirtPrice101To200;
-    return totalPrice1To200;
+    const tShirtPrice1To100 = 100 * price1To100;
+    const tShirtPrice101To200 = quantityUpto100 * 80;
+    const totalPrice = tShirtPrice1To100 + tShirtPrice101To200;
+    return totalPrice;
   } else {
-    const tShirtPrice100 = 100 * quantity1To100;
-    const tShirtPrice101To200 = 100 * quantity101To200;
-    const restTShirt = quantity - 200;
-    const tShirtPriceUpTo200 = restTShirt * 50;
+    const tShirtPrice1To100 = 100 * price1To100;
+    const tShirtPrice101To200 = 100 * price101To200;
+    const tShirtPriceUpTo200 = quantityUpto200 * 50;
     const totalPrice =
-      tShirtPrice100 + tShirtPrice101To200 + tShirtPriceUpTo200;
+      tShirtPrice1To100 + tShirtPrice101To200 + tShirtPriceUpTo200;
     return totalPrice;
   }
 }
-console.log(deliveryCost(-205));
+console.log(deliveryCost(205)); // output: 18250
 
 //problem 4 :find the perfect friend of five characters.
 
